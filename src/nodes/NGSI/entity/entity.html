@@ -13,9 +13,6 @@
                 type: 'Context-Broker',
                 required: true
             },
-            protocol: {
-                'value': 'LD'
-            },
             ldContext: { value: defLdContext },
             mode: { value: 'normalized' },
             mimeType: { value: 'application/ld+json' },
@@ -27,6 +24,11 @@
         align: 'right',
         label: function() {
             return this.name || 'NGSI Entity';
+        },
+        oneditprepare: function() {
+            console.log(RED.nodes.);
+
+            console.log(RED.nodes.getNode('e8dfc44e.b7d7a8'));
         }
     });
 
@@ -58,13 +60,6 @@
     <div class="form-row">
         <label for="node-input-endpoint"><i class="icon-tag"></i> Endpoint</label>
         <input required type="url" id="node-input-endpoint" placeholder="https://orion.lab.fiware.org">
-    </div>
-    <div class="form-row">
-        <label for="node-input-protocol"><i class="icon-tag"></i> Protocol</label>
-        <select id="node-input-protocol" onchange="protocolChanged(event)">
-            <option value="LD" selected>NGSI-LD</option>
-            <option value="v2">NGSIv2</option>
-        </select>
     </div>
     <div class="form-row" id="ldContext">
         <label for="node-input-ldContext"><i class="icon-tag"></i> JSON-LD @context</label>

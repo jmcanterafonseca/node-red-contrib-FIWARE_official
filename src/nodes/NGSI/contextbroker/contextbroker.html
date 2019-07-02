@@ -32,6 +32,10 @@
                 validate: endpointValidator.bind(null, true)
             },
 
+            protocol: {
+                'value': 'LD'
+            },
+
             service: {
                 value: ''
             },
@@ -87,14 +91,21 @@
     </div>
     <div id="node-config-context-broker-tabs-content" style="min-height: 170px;">
         <div id="context-broker-tab-connection" style="display:none">
-            <div class="form-row">
+             <div class="form-row">
                 <label for="node-config-input-endpoint"><i class="icon-tag"></i> Endpoint</label>
                 <input required type="url" id="node-config-input-endpoint" placeholder="https://orion.lab.fiware.org">
-            </div>
+             </div>
+             <div class="form-row">
+                <label for="node-input-protocol"><i class="icon-tag"></i> Protocol</label>
+                <select id="node-input-protocol" onchange="protocolChanged(event)">
+                    <option value="LD" selected>NGSI-LD</option>
+                    <option value="v2">NGSIv2</option>
+                </select>
+             </div>
              <div class="form-row">
                 <label for="node-config-input-service"><i class="icon-tag"></i> Fiware-Service</label>
                 <input type="text" id="node-config-input-service">
-            </div>
+             </div>
         </div>
 
         <div id="context-broker-tab-security" style="display:none">
